@@ -33,8 +33,8 @@ git commit -m "Initial commit: Minimalist portfolio landing page"
 # Set main branch
 git branch -M main
 
-# Add your GitHub repository as remote (replace YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/rndpig-landing.git
+# Add your GitHub repository as remote
+git remote add origin https://github.com/rndpig/rndpig-landing.git
 
 # Push to GitHub
 git push -u origin main
@@ -55,7 +55,7 @@ git push -u origin main
 5. Click **"Save"**
 
 ### Step 2: Verify GitHub Pages URL
-- Your site will be available at: `https://YOUR_USERNAME.github.io/rndpig-landing/`
+- Your site will be available at: `https://rndpig.github.io/rndpig-landing/`
 - It may take a few minutes to become active
 - GitHub will show the URL in the Pages settings once ready
 
@@ -115,11 +115,9 @@ TTL: 1 Hour
 ```
 Type: CNAME
 Name: www
-Value: YOUR_USERNAME.github.io
+Value: rndpig.github.io
 TTL: 1 Hour
 ```
-
-**Note**: Replace `YOUR_USERNAME` with your actual GitHub username.
 
 ### Step 3: Wait for DNS Propagation
 - DNS changes can take **up to 48 hours** to fully propagate
@@ -143,7 +141,7 @@ If your domain doesn't load:
 1. **Wait longer**: DNS can take up to 48 hours
 2. **Check DNS**: Use [dnschecker.org](https://dnschecker.org/) to verify propagation
 3. **Clear browser cache**: Try incognito/private browsing mode
-4. **Verify GitHub Pages**: Ensure `https://YOUR_USERNAME.github.io/rndpig-landing/` works first
+3. **Verify GitHub Pages**: Ensure `https://rndpig.github.io/rndpig-landing/` works first
 
 ## Part 5: Future Updates
 
