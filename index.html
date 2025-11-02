@@ -18,23 +18,22 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="rndpig" class="logo-svg">
+                <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="rndpig" class="logo-svg">
                   <style>
                     text{fill:currentColor; font:800 96px/1 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; letter-spacing:1px}
-                    .snout{fill:none; stroke:currentColor; stroke-width:12; stroke-linejoin:round}
+                    .snout{fill:none; stroke:currentColor; stroke-width:8; stroke-linejoin:round}
                     .nostril{fill:currentColor}
                   </style>
-                  <text x="24" y="110">rndpig </text>
-                  <!-- Larger snout positioned after the text with space -->
-                  <g transform="translate(650,80)">
-                    <rect class="snout" x="-28" y="-18" width="56" height="36" rx="16"/>
-                    <circle class="nostril" cx="-10" cy="0" r="5.5"/>
-                    <circle class="nostril" cx="10"  cy="0" r="5.5"/>
+                  <text x="24" y="110">rndpig</text>
+                  <!-- Snout positioned immediately after 'g', same height as letters -->
+                  <g transform="translate(570,110)">
+                    <rect class="snout" x="4" y="-48" width="72" height="48" rx="20"/>
+                    <circle class="nostril" cx="22" cy="-24" r="6"/>
+                    <circle class="nostril" cx="58" cy="-24" r="6"/>
                   </g>
                 </svg>
             </div>
             <nav class="nav">
-                <a href="#home" class="nav-link">Home</a>
                 <a href="mailto:rndpig@gmail.com?subject=rndpig.com contact" class="nav-link">Contact</a>
             </nav>
         </div>
