@@ -1,14 +1,24 @@
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="100%" viewBox="0 0 694 177" enable-background="new 0 0 694 177" xml:space="preserve">
-<path fill="#FDFEFF" opacity="1.000000" stroke="none" 
-	d="
-M456.000000,178.000000 
-	C304.043457,178.000000 152.586899,178.000000 1.065179,178.000000 
-	C1.065179,119.060440 1.065179,60.120781 1.065179,1.090563 
-	C232.333313,1.090563 463.666656,1.090563 694.965576,1.090563 
-	C694.965576,60.079796 694.965576,119.039909 694.965576,178.000000 
-	C615.454041,178.000000 535.977051,178.000000 456.000000,178.000000 
-M54.883427,66.960167 
+<svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+  <style>	 width="100%" viewBox="0 0 694 177" enable-background="new 0 0 694 177" xml:space="preserve">
+
+    .text { fill: #2563eb; font-family: Inter, system-ui, sans-serif; font-weight: 800; font-size: 48px; }<path fill="#FDFEFF" opacity="1.000000" stroke="none" 
+
+    .snout { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linejoin: round; }	d="
+
+    .nostril { fill: #2563eb; }M456.000000,178.000000 
+
+  </style>	C304.043457,178.000000 152.586899,178.000000 1.065179,178.000000 
+
+  <text x="10" y="55" class="text">rndpig</text>	C1.065179,119.060440 1.065179,60.120781 1.065179,1.090563 
+
+  <ellipse class="snout" cx="320" cy="40" rx="30" ry="20"/>	C232.333313,1.090563 463.666656,1.090563 694.965576,1.090563 
+
+  <circle class="nostril" cx="308" cy="40" r="6"/>	C694.965576,60.079796 694.965576,119.039909 694.965576,178.000000 
+
+  <circle class="nostril" cx="332" cy="40" r="6"/>	C615.454041,178.000000 535.977051,178.000000 456.000000,178.000000 
+
+</svg>M54.883427,66.960167 
 	C54.883427,66.960167 54.930561,66.801453 55.669426,66.773438 
 	C57.771896,66.151283 59.874367,65.529129 62.824947,65.082169 
 	C64.553444,65.049194 66.281944,65.016220 68.616852,65.386635 
