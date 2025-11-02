@@ -50,7 +50,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.75rem 2rem;
 }
 
 .logo {
@@ -79,22 +79,22 @@ p {
 
 /* Applications Section */
 .applications {
-    padding: 4rem 0;
+    padding: 1rem 0;
     background: #fff;
 }
 
 .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: #333;
     font-weight: 400;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
     max-width: 700px;
     margin: 0 auto;
 }
@@ -107,7 +107,7 @@ p {
 
 .project-card {
     background: #fff;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid #eee;
     border-radius: 8px;
     text-align: center;
@@ -170,7 +170,7 @@ p {
 
 /* Footer */
 .footer {
-    padding: 2rem 0;
+    padding: 1rem 0;
     background: #fafafa;
     border-top: 1px solid #eee;
     text-align: center;
@@ -189,7 +189,7 @@ p {
     }
     
     .header .container {
-        padding: 1rem 1.5rem;
+        padding: 0.5rem 1.5rem;
     }
 
     .nav {
@@ -205,7 +205,12 @@ p {
     }
 
     .applications {
-        padding: 2rem 0;
+        padding: 0.75rem 0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
     }
 
     .section-title {
@@ -229,7 +234,7 @@ p {
     }
     
     .header .container {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     .nav {
@@ -241,7 +246,15 @@ p {
     }
 
     .applications {
-        padding: 1.5rem 0;
+        padding: 0.5rem 0;
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .projects-grid {
+        gap: 1rem;
     }
 
     .logo {
