@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <rect width="32" height="32" rx="6" fill="#2563eb"/>
-  <text x="16" y="22" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="white">RND</text>
+  <!-- Simplified pig snout icon for favicon -->
+  <g transform="translate(16,16)" fill="white">
+    <ellipse cx="0" cy="0" rx="8" ry="6"/>
+    <circle cx="-3" cy="-1" r="1.5"/>
+    <circle cx="3" cy="-1" r="1.5"/>
+  </g>
 </svg>

@@ -54,10 +54,16 @@ p {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 500;
     color: #2563eb;
     margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo-svg {
+    height: 2rem;
+    width: auto;
+    color: inherit;
 }
 
 .nav {
@@ -302,7 +308,7 @@ p {
         gap: 1rem;
     }
 
-    .logo {
-        font-size: 1.25rem;
+    .logo-svg {
+        height: 1.75rem;
     }
 }
