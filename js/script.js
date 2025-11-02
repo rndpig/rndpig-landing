@@ -18,26 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add active state to navigation links
+    // Add active state to navigation links (simplified)
     const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    
-    function setActiveNavLink() {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const sectionHeight = section.clientHeight;
-            if (sectionTop <= 100 && sectionTop + sectionHeight > 100) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.style.color = link.getAttribute('href') === '#' + current ? '#2563eb' : '#666';
-        });
-    }
-
-    // Set active link on scroll
-    window.addEventListener('scroll', setActiveNavLink);
-    setActiveNavLink(); // Set initial state
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === '#home') {
+            link.style.color = '#2563eb';
+        }
+    });
 });

@@ -77,37 +77,9 @@ p {
     color: #2563eb;
 }
 
-/* Hero Section */
-.hero {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #fafafa;
+/* Applications Section */
+.applications {
     padding: 4rem 0;
-}
-
-.hero-content {
-    max-width: 600px;
-}
-
-.hero-title {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.hero-subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 0;
-}
-
-/* Projects Section */
-.projects {
-    padding: 3rem 0;
     background: #fff;
 }
 
@@ -232,7 +204,7 @@ p {
         font-size: 1rem;
     }
 
-    .projects {
+    .applications {
         padding: 2rem 0;
     }
 
@@ -268,8 +240,8 @@ p {
         font-size: 0.9rem;
     }
 
-    .hero-title {
-        font-size: 2rem;
+    .applications {
+        padding: 1.5rem 0;
     }
 
     .logo {
