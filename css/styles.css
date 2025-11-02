@@ -60,10 +60,9 @@ p {
     align-items: center;
 }
 
-.logo-svg {
+.logo-img {
     height: 2rem;
     width: auto;
-    color: inherit;
 }
 
 .nav {
@@ -308,7 +307,7 @@ p {
         gap: 1rem;
     }
 
-    .logo-svg {
+    .logo-img {
         height: 1.75rem;
     }
 }
