@@ -79,12 +79,13 @@ p {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: #fafafa;
+    padding: 4rem 0;
 }
 
 .hero-content {
@@ -106,14 +107,14 @@ p {
 
 /* Projects Section */
 .projects {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background: #fff;
 }
 
 .section-title {
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: #333;
     font-weight: 400;
 }
@@ -126,6 +127,12 @@ p {
     margin: 0 auto;
 }
 
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .project-card {
     background: #fff;
     padding: 2rem;
@@ -133,11 +140,14 @@ p {
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
+.project-card-link .project-card:hover,
 .project-card:hover {
     border-color: #2563eb;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
 }
 
 .project-card.coming-soon {
@@ -170,9 +180,10 @@ p {
     font-weight: 400;
     font-size: 0.95rem;
     transition: color 0.3s ease;
+    pointer-events: none; /* Prevent double-click on nested link */
 }
 
-.project-link:hover {
+.project-card-link:hover .project-link {
     color: #1d4ed8;
 }
 
@@ -187,7 +198,7 @@ p {
 
 /* Footer */
 .footer {
-    padding: 3rem 0;
+    padding: 2rem 0;
     background: #fafafa;
     border-top: 1px solid #eee;
     text-align: center;
@@ -222,7 +233,7 @@ p {
     }
 
     .projects {
-        padding: 4rem 0;
+        padding: 2rem 0;
     }
 
     .section-title {
