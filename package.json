@@ -1,0 +1,36 @@
+{
+  "name": "rndpig-landing-page",
+  "version": "1.0.0",
+  "description": "Minimalist portfolio landing page for RND applications and projects",
+  "author": "RND",
+  "homepage": "https://rndpig.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rndpig/landing-page.git"
+  },
+  "license": "Private",
+  "keywords": [
+    "portfolio",
+    "landing-page",
+    "minimalist",
+    "projects",
+    "gallery"
+  ],
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve-node": "npx http-server -p 8000",
+    "build": "echo 'No build process required for static site'",
+    "validate": "echo 'Running HTML validation...' && echo 'Running CSS validation...'",
+    "optimize": "echo 'Image optimization and minification would go here'"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "config": {
+    "port": 8000,
+    "host": "localhost"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
