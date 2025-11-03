@@ -1,14 +1,24 @@
-<svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg"><svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 
-  <style>	 width="100%" viewBox="0 0 694 177" enable-background="new 0 0 694 177" xml:space="preserve">
+  <style>
 
-    .text { fill: #2563eb; font-family: Inter, system-ui, sans-serif; font-weight: 800; font-size: 48px; }<path fill="#FDFEFF" opacity="1.000000" stroke="none" 
+    .text { fill: #2563eb; font-family: Inter, system-ui, sans-serif; font-weight: 800; font-size: 48px; }  <style>	 width="100%" viewBox="0 0 694 177" enable-background="new 0 0 694 177" xml:space="preserve">
 
-    .snout { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linejoin: round; }	d="
+    .snout { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linejoin: round; }
 
-    .nostril { fill: #2563eb; }M456.000000,178.000000 
+    .nostril { fill: #2563eb; }    .text { fill: #2563eb; font-family: Inter, system-ui, sans-serif; font-weight: 800; font-size: 48px; }<path fill="#FDFEFF" opacity="1.000000" stroke="none" 
 
-  </style>	C304.043457,178.000000 152.586899,178.000000 1.065179,178.000000 
+  </style>
+
+  <text x="10" y="55" class="text">rndpig</text>    .snout { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linejoin: round; }	d="
+
+  <ellipse class="snout" cx="320" cy="40" rx="30" ry="20"/>
+
+  <circle class="nostril" cx="308" cy="40" r="6"/>    .nostril { fill: #2563eb; }M456.000000,178.000000 
+
+  <circle class="nostril" cx="332" cy="40" r="6"/>
+
+</svg>  </style>	C304.043457,178.000000 152.586899,178.000000 1.065179,178.000000 
 
   <text x="10" y="55" class="text">rndpig</text>	C1.065179,119.060440 1.065179,60.120781 1.065179,1.090563 
 
