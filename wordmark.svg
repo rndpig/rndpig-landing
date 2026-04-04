@@ -1,11 +1,11 @@
-<svg viewBox="0 0 145 40" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
   <style>
     .text { fill: #f0f0f5; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.5px; }
     .snout { fill: none; stroke: #3b82f6; stroke-width: 2.5; }
     .nostril { fill: #3b82f6; }
   </style>
   <text x="0" y="28" class="text">rndpig</text>
-  <g transform="translate(115, 20)">
+  <g transform="translate(100, 20)">
     <ellipse class="snout" cx="0" cy="0" rx="14" ry="10"/>
     <circle class="nostril" cx="-5" cy="0" r="3"/>
     <circle class="nostril" cx="5" cy="0" r="3"/>
