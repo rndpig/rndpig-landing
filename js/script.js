@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
     
     function setActiveNavLink() {
-        let current = 'home'; // default to home
+        let current = 'home';
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
             const sectionHeight = section.clientHeight;
@@ -33,11 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         navLinks.forEach(link => {
-            link.style.color = link.getAttribute('href') === '#' + current ? '#2563eb' : '#666';
+            const isActive = link.getAttribute('href') === '#' + current;
+            link.style.color = isActive ? 'var(--accent-primary)' : 'var(--text-secondary)';
         });
     }
 
     // Set active link on scroll
     window.addEventListener('scroll', setActiveNavLink);
-    setActiveNavLink(); // Set initial state
+    setActiveNavLink();
+
+    // Add subtle parallax effect to welcome section
+    const welcomeSection = document.querySelector('.welcome');
+    if (welcomeSection) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * 0.3;
+            welcomeSection.style.transform = `translateY(${rate}px)`;
+        });
+    }
 });

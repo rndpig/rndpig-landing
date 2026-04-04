@@ -9,30 +9,65 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    /* Dark mode color palette */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #16161f;
+    --bg-card-hover: #1a1a25;
+    --text-primary: #f0f0f5;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6b6b7b;
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --accent-glow: rgba(99, 102, 241, 0.4);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.5);
+    --gradient-start: #6366f1;
+    --gradient-end: #8b5cf6;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-primary);
+    background: var(--bg-primary);
     font-weight: 300;
+    min-height: 100vh;
+}
+
+/* Subtle background gradient */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 20% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 /* Typography */
 h1, h2, h3 {
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
 p {
     margin-bottom: 1rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 /* Header */
@@ -40,9 +75,10 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #eee;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
 }
 
@@ -54,7 +90,6 @@ p {
 }
 
 .logo {
-    color: #2563eb;
     margin: 0;
     display: flex;
     align-items: center;
@@ -63,6 +98,13 @@ p {
 .logo-img {
     height: 2rem;
     width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.logo-img:hover {
+    opacity: 1;
 }
 
 .nav {
@@ -72,21 +114,21 @@ p {
 
 .nav-link {
     text-decoration: none;
-    color: #666;
+    color: var(--text-secondary);
     font-weight: 400;
     transition: color 0.3s ease;
     font-size: 0.95rem;
 }
 
 .nav-link:hover {
-    color: #2563eb;
+    color: var(--accent-primary);
 }
 
 /* Welcome Section */
 .welcome {
-    padding: 5rem 0 1rem;
-    background: #fafafa;
+    padding: 6rem 0 2rem;
     text-align: center;
+    position: relative;
 }
 
 .welcome-content {
@@ -95,37 +137,43 @@ p {
 }
 
 .welcome-title {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-    color: #333;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .welcome-subtitle {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.15rem;
+    color: var(--text-muted);
     margin-bottom: 0;
 }
 
 /* Applications Section */
 .applications {
-    padding: 1rem 0;
-    background: #fff;
+    padding: 2rem 0 4rem;
 }
 
 .section-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
     font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
 }
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -136,80 +184,125 @@ p {
 }
 
 .project-card {
-    background: #fff;
-    padding: 1.5rem;
-    border: 1px solid #eee;
-    border-radius: 8px;
+    background: var(--bg-card);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient border effect on hover */
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Glow effect */
+.project-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    opacity: 0;
+    z-index: -1;
+    filter: blur(20px);
+    transition: opacity 0.4s ease;
 }
 
 .project-card-link .project-card:hover,
 .project-card:hover {
-    border-color: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    background: var(--bg-card-hover);
+    transform: translateY(-6px);
+    border-color: transparent;
+}
+
+.project-card-link .project-card:hover::before,
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card-link .project-card:hover::after,
+.project-card:hover::after {
+    opacity: 0.15;
 }
 
 .project-card.coming-soon {
-    background: #fafafa;
+    background: var(--bg-secondary);
     border-style: dashed;
+    opacity: 0.6;
 }
 
 .project-card.coming-soon:hover {
     transform: none;
-    border-color: #ccc;
+    border-color: var(--border-color);
 }
 
 .project-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     margin-bottom: 0.75rem;
-    color: #333;
-    font-weight: 500;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .project-card p {
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
-    color: #666;
+    color: var(--text-secondary);
+    line-height: 1.7;
 }
 
 .project-link {
-    display: inline-block;
-    color: #2563eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
-    pointer-events: none; /* Prevent double-click on nested link */
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
 .project-card-link:hover .project-link {
-    color: #1d4ed8;
+    color: var(--accent-secondary);
+    gap: 0.75rem;
 }
 
 .project-link.disabled {
-    color: #999;
+    color: var(--text-muted);
     cursor: default;
 }
 
 .project-link.disabled:hover {
-    color: #999;
+    color: var(--text-muted);
 }
 
 /* Footer */
 .footer {
-    padding: 1rem 0;
-    background: #fafafa;
-    border-top: 1px solid #eee;
+    padding: 2rem 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
     text-align: center;
 }
 
 .footer p {
     margin: 0;
-    color: #999;
-    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
 /* Responsive Design */
@@ -226,20 +319,12 @@ p {
         gap: 1.5rem;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
     .welcome {
-        padding: 4rem 0 0.75rem;
+        padding: 5rem 0 1.5rem;
     }
 
     .welcome-title {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
 
     .welcome-subtitle {
@@ -247,17 +332,7 @@ p {
     }
 
     .applications {
-        padding: 0.75rem 0;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
+        padding: 1.5rem 0 3rem;
     }
 
     .projects-grid {
@@ -276,7 +351,7 @@ p {
     }
     
     .header .container {
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
     }
 
     .nav {
@@ -288,15 +363,15 @@ p {
     }
 
     .welcome {
-        padding: 3.5rem 0 0.5rem;
+        padding: 4.5rem 0 1rem;
     }
 
     .welcome-title {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
     }
 
     .applications {
-        padding: 0.5rem 0;
+        padding: 1rem 0 2.5rem;
     }
 
     .project-card {
