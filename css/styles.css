@@ -124,7 +124,7 @@ p {
 
 /* Welcome Section */
 .welcome {
-    padding: 6rem 0 2rem;
+    padding: 4.5rem 0 0.75rem;
     text-align: center;
     position: relative;
 }
@@ -135,9 +135,9 @@ p {
 }
 
 .welcome-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
     color: var(--text-primary);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
     -webkit-background-clip: text;
@@ -146,31 +146,30 @@ p {
 }
 
 .welcome-subtitle {
-    font-size: 1.15rem;
+    font-size: 1rem;
     color: var(--text-muted);
     margin-bottom: 0;
 }
 
 /* Applications Section */
 .applications {
-    padding: 2rem 0 4rem;
+    padding: 1rem 0 2rem;
 }
 
 .section-title {
-    font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: var(--text-secondary);
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -183,9 +182,9 @@ p {
 
 .project-card {
     background: var(--bg-card);
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 16px;
+    border-radius: 12px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -198,7 +197,7 @@ p {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 1px;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -213,7 +212,7 @@ p {
     content: '';
     position: absolute;
     inset: -2px;
-    border-radius: 18px;
+    border-radius: 14px;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     opacity: 0;
     z-index: -1;
@@ -250,17 +249,17 @@ p {
 }
 
 .project-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
     color: var(--text-primary);
     font-weight: 600;
 }
 
 .project-card p {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 .project-link {
@@ -270,7 +269,7 @@ p {
     color: var(--accent-primary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
     pointer-events: none;
 }
@@ -291,7 +290,7 @@ p {
 
 /* Footer */
 .footer {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
     text-align: center;
@@ -300,17 +299,17 @@ p {
 .footer p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
     
     .header .container {
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 1rem;
     }
 
     .nav {
@@ -318,38 +317,38 @@ p {
     }
 
     .welcome {
-        padding: 5rem 0 1.5rem;
+        padding: 4rem 0 0.5rem;
     }
 
     .welcome-title {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .welcome-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .applications {
-        padding: 1.5rem 0 3rem;
+        padding: 0.75rem 0 1.5rem;
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 0.75rem;
     }
 
     .project-card {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 0.75rem;
     }
     
     .header .container {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.75rem;
     }
 
     .nav {
@@ -361,23 +360,23 @@ p {
     }
 
     .welcome {
-        padding: 4.5rem 0 1rem;
+        padding: 3.75rem 0 0.5rem;
     }
 
     .welcome-title {
-        font-size: 1.85rem;
+        font-size: 1.75rem;
     }
 
     .applications {
-        padding: 1rem 0 2.5rem;
+        padding: 0.5rem 0 1.5rem;
     }
 
     .project-card {
-        padding: 1.25rem;
+        padding: 1rem;
     }
 
     .projects-grid {
-        gap: 1rem;
+        gap: 0.6rem;
     }
 
     .logo-img {
