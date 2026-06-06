@@ -122,6 +122,18 @@ p {
     color: var(--accent-primary);
 }
 
+.nav-settings {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-settings:hover {
+    color: var(--accent-primary);
+}
+
 /* Welcome Section */
 .welcome {
     padding: 4.5rem 0 0.75rem;
