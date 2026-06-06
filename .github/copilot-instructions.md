@@ -1,6 +1,18 @@
 # rndpig.com Landing Page — Copilot Instructions
 # Last Updated: 2026-04-18
 
+## Why rndpig-identity is a Separate Repo
+
+`rndpig-landing` is a **GitHub Pages static site** — it serves only HTML/CSS/JS files. It cannot run Python, FastAPI, or any server-side code. GitHub Pages has no backend.
+
+`rndpig-identity` is a **Python FastAPI service** running on dilger as a systemd process. It owns the allowlist database and enforces access control. It must be a separate repo because it deploys via `scp`/`systemctl`, not `git push`.
+
+They work together: the admin UI in `rndpig-landing/admin/` is a static page that **calls** `admin-api.rndpig.com` (which is `rndpig-identity` on dilger). The UI has no enforcement power of its own — all enforcement happens in the identity service.
+
+Do not attempt to merge these repos or move the backend code here. The separation is architectural, not organizational.
+
+---
+
 ## Project Overview
 
 Minimalist dark-themed portfolio landing page at **rndpig.com** that serves as the central hub linking to 5 project subdomains.
