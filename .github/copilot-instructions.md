@@ -93,3 +93,16 @@ When `lawn.rndpig.com` ships, add a card for it to `index.html`.
 2. **Single page** — entire site is one `index.html`
 3. **When adding a new project**, add a card to the grid in `index.html` and update the nav if needed
 4. **Subdomain pattern**: All apps live on `*.rndpig.com` — DNS managed in GoDaddy
+5. **Google Analytics**: All apps share measurement ID `G-JKFNH6HFHQ`. Every new app's `index.html` must include this snippet inside `<head>`:
+   ```html
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKFNH6HFHQ"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-JKFNH6HFHQ');
+   </script>
+   ```
+6. **Auth**: All apps use the `rndpig-admin` Firebase project (`project-191989121826`) for Google sign-in. Token verification uses `FIREBASE_PROJECT_ID=rndpig-admin`. Email allowlist is centralized at `admin-api.rndpig.com` (rndpig-identity service, port 8005 on dilger). Feature backends fetch the allowlist via `X-API-Key` every 60s with local `ALLOWED_EMAILS` as fallback. Only `rndpig@gmail.com` may add/delete allowlist entries.
+7. **Admin UI**: `rndpig.com/admin/` manages the allowlist. Settings gear icon in the landing page nav links there.
