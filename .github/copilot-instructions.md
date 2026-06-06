@@ -76,6 +76,17 @@ rndpig-landing/
 
 ---
 
+## Cross-Project Workflows
+
+This repo hosts shared playbooks consumed by every `*.rndpig.com` app:
+
+- [`docs/SUBDOMAIN_SETUP.md`](../docs/SUBDOMAIN_SETUP.md) — end-to-end subdomain provisioning (Cloudflare tunnel + Firebase Hosting + Firebase Auth). Apex `rndpig.com` DNS is GoDaddy → GitHub Pages, but **all subdomains are managed in Cloudflare** (no GoDaddy changes needed).
+- [`docs/LAWN_APP_PLAN.md`](../docs/LAWN_APP_PLAN.md) — plan for `lawn.rndpig.com` (`lawn-control` repo), the central property intelligence hub.
+
+When `lawn.rndpig.com` ships, add a card for it to `index.html`.
+
+---
+
 ## Important Notes
 
 1. **No build step** — edit files directly, push to deploy

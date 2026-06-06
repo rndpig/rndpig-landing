@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rndpig · Access Control</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .admin-wrap { max-width: 560px; margin: 4rem auto; padding: 0 1.5rem; }
+    .admin-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .admin-card h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+    .admin-card p  { margin: 0 0 1.5rem; color: #94a3b8; font-size: 0.88rem; }
+
+    #sign-in-section, #admin-section { display: none; }
+    #sign-in-section.active, #admin-section.active { display: block; }
+
+    .sign-in-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.25rem;
+      background: #fff; color: #111; border: none; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    }
+    .sign-in-btn:hover { background: #f1f5f9; }
+
+    .user-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.25rem; font-size: 0.82rem; color: #94a3b8;
+    }
+    .sign-out-btn {
+      background: none; border: 1px solid #475569; color: #94a3b8;
+      padding: 0.2rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.78rem;
+    }
+    .sign-out-btn:hover { background: #334155; color: #f1f5f9; }
+
+    #email-list { list-style: none; margin: 0 0 1.25rem; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+    #email-list li {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.05); padding: 0.45rem 0.75rem;
+      border-radius: 8px; font-size: 0.85rem;
+    }
+    .del-btn {
+      background: none; border: none; color: #f87171; cursor: pointer;
+      font-size: 1rem; line-height: 1; padding: 0 0.2rem;
+    }
+    .del-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .del-btn:hover:not(:disabled) { color: #ef4444; }
+
+    .add-row { display: flex; gap: 0.5rem; }
+    .add-row input {
+      flex: 1; background: #1e293b; border: 1px solid #334155;
+      border-radius: 8px; color: #f1f5f9; font-size: 0.85rem;
+      padding: 0.45rem 0.75rem;
+    }
+    .add-btn {
+      padding: 0.45rem 1rem; background: #3b82f6; color: #fff;
+      border: none; border-radius: 8px; font-size: 0.85rem; cursor: pointer;
+    }
+    .add-btn:hover { background: #2563eb; }
+    .add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    #status-msg { margin-top: 1rem; font-size: 0.8rem; min-height: 1.2em; }
+    .ok  { color: #4ade80; }
+    .err { color: #f87171; }
+    #loading-msg { color: #94a3b8; font-size: 0.82rem; margin: 0 0 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand"><a href="/">🐷 rndpig</a></div>
+    <div class="nav-links">
+      <a href="/">← Home</a>
+    </div>
+  </nav>
+
+  <div class="admin-wrap">
+    <div class="admin-card">
+      <h2>🔐 Access Control</h2>
+      <p>Manage which Google accounts can access the rndpig.com apps.<br>
+         You must already be on the allowlist to make changes.</p>
+
+      <div id="sign-in-section">
+        <button class="sign-in-btn" id="sign-in-btn">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.35-8.16 2.35-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Sign in with Google
+        </button>
+      </div>
+
+      <div id="admin-section">
+        <div class="user-bar">
+          <span id="user-email"></span>
+          <button class="sign-out-btn" id="sign-out-btn">Sign out</button>
+        </div>
+        <p id="loading-msg">Loading allowlist…</p>
+        <ul id="email-list"></ul>
+        <div class="add-row">
+          <input type="email" id="new-email" placeholder="newuser@gmail.com" />
+          <button class="add-btn" id="add-btn">Add</button>
+        </div>
+        <div id="status-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK (CDN, no build step) -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+      from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js';
+
+    const ID_API = 'https://admin-api.rndpig.com';
+
+    const app = initializeApp({
+      apiKey:            "AIzaSyDzWFMYEAEXU5yEvgFlHBiS9Z-ce4PHUBU",
+      authDomain:        "rndpig-admin.firebaseapp.com",
+      projectId:         "rndpig-admin",
+      storageBucket:     "rndpig-admin.firebasestorage.app",
+      messagingSenderId: "191989121826",
+      appId:             "1:191989121826:web:9fb5072bdfd514465f5b7b"
+    });
+    const auth     = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const signInSection  = document.getElementById('sign-in-section');
+    const adminSection   = document.getElementById('admin-section');
+    const userEmailEl    = document.getElementById('user-email');
+    const loadingMsg     = document.getElementById('loading-msg');
+    const emailList      = document.getElementById('email-list');
+    const newEmailInput  = document.getElementById('new-email');
+    const addBtn         = document.getElementById('add-btn');
+    const statusMsg      = document.getElementById('status-msg');
+
+    let currentToken = null;
+
+    function setStatus(msg, type = '') {
+      statusMsg.textContent = msg;
+      statusMsg.className = type;
+    }
+
+    async function getToken() {
+      const user = auth.currentUser;
+      if (!user) throw new Error('Not signed in');
+      return user.getIdToken();
+    }
+
+    async function loadList() {
+      loadingMsg.textContent = 'Loading…';
+      emailList.innerHTML = '';
+      try {
+        const token = await getToken();
+        const res = await fetch(`${ID_API}/api/v1/allowlist`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (res.status === 403) {
+          loadingMsg.textContent = '⚠️ Your account is not on the allowlist.';
+          addBtn.disabled = true;
+          return;
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        loadingMsg.textContent = '';
+        const emails = data.emails || [];
+        emails.forEach(email => appendRow(email, emails.length));
+        addBtn.disabled = false;
+      } catch (e) {
+        loadingMsg.textContent = `Error: ${e.message}`;
+      }
+    }
+
+    function appendRow(email, total) {
+      const li = document.createElement('li');
+      li.dataset.email = email;
+      li.innerHTML = `<span>${email}</span>
+        <button class="del-btn" title="Remove" ${total <= 1 ? 'disabled' : ''}>✕</button>`;
+      li.querySelector('.del-btn').addEventListener('click', () => removeEmail(email));
+      emailList.appendChild(li);
+    }
+
+    async function removeEmail(email) {
+      if (!confirm(`Remove ${email} from the allowlist?`)) return;
+      setStatus('');
+      try {
+        const token = await getToken();
+        const res = await fetch(`${ID_API}/api/v1/allowlist/${encodeURIComponent(email)}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (!res.ok) { setStatus(data.detail || 'Error', 'err'); return; }
+        setStatus(data.message, 'ok');
+        await loadList();
+      } catch (e) {
+        setStatus(e.message, 'err');
+      }
+    }
+
+    document.getElementById('sign-in-btn').addEventListener('click', () =>
+      signInWithPopup(auth, provider).catch(e => setStatus(e.message, 'err'))
+    );
+    document.getElementById('sign-out-btn').addEventListener('click', () =>
+      signOut(auth)
+    );
+
+    addBtn.addEventListener('click', async () => {
+      const email = newEmailInput.value.trim().toLowerCase();
+      if (!email || !email.includes('@')) { setStatus('Enter a valid email.', 'err'); return; }
+      setStatus('');
+      addBtn.disabled = true;
+      try {
+        const token = await getToken();
+        const res = await fetch(`${ID_API}/api/v1/allowlist`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (!res.ok) { setStatus(data.detail || 'Error', 'err'); return; }
+        setStatus(data.message, 'ok');
+        newEmailInput.value = '';
+        await loadList();
+      } catch (e) {
+        setStatus(e.message, 'err');
+      } finally {
+        addBtn.disabled = false;
+      }
+    });
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        signInSection.classList.remove('active');
+        adminSection.classList.add('active');
+        userEmailEl.textContent = user.email;
+        loadList();
+      } else {
+        signInSection.classList.add('active');
+        adminSection.classList.remove('active');
+        emailList.innerHTML = '';
+        loadingMsg.textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>
