@@ -66,20 +66,34 @@
     #status-msg { margin-top: 1rem; font-size: 0.8rem; min-height: 1.2em; }
     .ok  { color: #4ade80; }
     .err { color: #f87171; }
+
+    /* Nav overrides for the admin page */
+    .admin-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .admin-nav a {
+      text-decoration: none; color: #a0a0b0; font-size: 0.9rem;
+      font-weight: 400; transition: color 0.2s;
+    }
+    .admin-nav a:hover { color: #3b82f6; }
+    .admin-nav .brand { font-weight: 600; color: #f0f0f5; font-size: 1rem; }
     #loading-msg { color: #94a3b8; font-size: 0.82rem; margin: 0 0 1rem; }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-brand"><a href="/">🐷 rndpig</a></div>
-    <div class="nav-links">
-      <a href="/">← Home</a>
-    </div>
+  <nav class="admin-nav">
+    <a href="/" class="brand">🐷 rndpig</a>
+    <a href="/">← Home</a>
   </nav>
 
   <div class="admin-wrap">
     <div class="admin-card">
-      <h2>🔐 Access Control</h2>
+      <h2>Access Control</h2>
       <p>Manage which Google accounts can access the rndpig.com apps.<br>
          You must already be on the allowlist to make changes.</p>
 
