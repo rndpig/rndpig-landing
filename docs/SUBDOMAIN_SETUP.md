@@ -31,6 +31,8 @@ Before touching anything, decide:
 | 8002 | network-monitor backend |
 | 8003 | weather-monitor backend |
 | 8004 | lawn-control backend |
+| 8005 | rndpig-identity (admin-api) |
+| 8006 | home-maintenance backend |
 | 5000 | deer-deterrent coordinator |
 | 1883/9001 | mosquitto |
 | 5432 | postgres (legacy) |
@@ -38,7 +40,7 @@ Before touching anything, decide:
 | 9080 | network-monitor frontend (containerized) |
 | 8080 | weather-monitor frontend (nginx) |
 
-Pick the next free port (e.g. **8004** for the next backend).
+Pick the next free port (e.g. **8007** for the next backend).
 
 ---
 
