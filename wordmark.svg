@@ -1,13 +1,12 @@
-<svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 124 40" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .text { fill: #f0f0f5; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.5px; }
-    .snout { fill: none; stroke: #3b82f6; stroke-width: 2.5; }
-    .nostril { fill: #3b82f6; }
+    .text { fill: #f2edef; font-family: Gabarito, system-ui, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.3px; }
   </style>
-  <text x="0" y="28" class="text">rndpig</text>
-  <g transform="translate(100, 20)">
-    <ellipse class="snout" cx="0" cy="0" rx="14" ry="10"/>
-    <circle class="nostril" cx="-5" cy="0" r="3"/>
-    <circle class="nostril" cx="5" cy="0" r="3"/>
+  <text x="0" y="29" class="text">rndpig</text>
+  <!-- Snout: squircle disc + tilted oval nostrils -->
+  <g transform="translate(88 8) scale(1.1)" fill="none">
+    <rect x="3.1" y="5.9" width="17.8" height="12.2" rx="5.6" stroke="#eb9db3" stroke-width="1.75"/>
+    <ellipse cx="8.7" cy="12.2" rx="1.5" ry="2.3" fill="#eb9db3" transform="rotate(-15 8.7 12.2)"/>
+    <ellipse cx="15.3" cy="12.2" rx="1.5" ry="2.3" fill="#eb9db3" transform="rotate(15 15.3 12.2)"/>
   </g>
 </svg>

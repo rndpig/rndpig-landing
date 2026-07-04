@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>rndpig · Access Control</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKFNH6HFHQ"></script>
   <script>
@@ -66,7 +67,7 @@
     }
     .add-btn {
       padding: 0.45rem 1rem; background: #3b82f6; color: #fff;
-      border: none; border-radius: 8px; font-size: 0.85rem; cursor: pointer;
+      border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
     }
     .add-btn:hover { background: #2563eb; }
     .add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -78,24 +79,32 @@
     /* Nav overrides for the admin page */
     .admin-nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+      background: rgba(19,18,23,0.88); backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
       padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
       height: 56px;
     }
     .admin-nav a {
-      text-decoration: none; color: #a0a0b0; font-size: 0.9rem;
+      text-decoration: none; color: #94a3b8; font-size: 0.9rem;
       font-weight: 400; transition: color 0.2s;
     }
-    .admin-nav a:hover { color: #3b82f6; }
-    .admin-nav .brand { font-weight: 600; color: #f0f0f5; font-size: 1rem; }
+    .admin-nav a:hover { color: #60a5fa; }
+    .admin-nav .brand-name { font-size: 1.05rem; }
+    .admin-nav .brand-mark { width: 1.3rem; height: 1.3rem; }
     #loading-msg { color: #94a3b8; font-size: 0.82rem; margin: 0 0 1rem; }
   </style>
 </head>
 <body>
   <nav class="admin-nav">
-    <a href="/" class="brand">🐷 rndpig</a>
+    <a href="/" class="brand">
+      <span class="brand-name">rndpig</span>
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+        <rect x="3.1" y="5.9" width="17.8" height="12.2" rx="5.6" stroke="currentColor" stroke-width="1.75"/>
+        <ellipse cx="8.7" cy="12.2" rx="1.5" ry="2.3" fill="currentColor" transform="rotate(-15 8.7 12.2)"/>
+        <ellipse cx="15.3" cy="12.2" rx="1.5" ry="2.3" fill="currentColor" transform="rotate(15 15.3 12.2)"/>
+      </svg>
+    </a>
     <a href="/">← Home</a>
   </nav>
 
