@@ -1,5 +1,5 @@
 # CLAUDE.md — rndpig-landing
-# Last Updated: 2026-06-06
+# Last Updated: 2026-07-04
 
 ## Project Overview
 
@@ -32,14 +32,15 @@ No build step needed. Edit files directly.
 
 ```
 rndpig-landing/
-├── index.html           # Single-page HTML (~95 lines)
-├── css/styles.css       # All styles, dark theme, CSS variables (~385 lines)
-├── js/script.js         # Smooth scroll, parallax, active nav (~55 lines)
-├── favicon.svg          # Pig snout SVG favicon
-├── wordmark.svg / .jpg  # Logo
+├── index.html           # Single-page app launcher (no JS — deleted js/script.js 2026-07-04)
+├── css/styles.css       # All styles, OKLCH tokens, pig-pink dark theme
+├── favicon.svg          # Snout mark on dark rounded square
+├── wordmark.svg / .jpg  # Standalone brand asset (index uses inline HTML brand instead)
+├── PRODUCT.md           # Impeccable design context (register: brand)
 ├── CNAME                # GitHub Pages custom domain
 ├── admin/               # Static admin UI for allowlist management (calls admin-api.rndpig.com)
 └── docs/
+    ├── superpowers/specs/   # Design specs (2026-07-04 landing refresh)
     ├── SUBDOMAIN_SETUP.md   # End-to-end subdomain provisioning playbook
     └── LAWN_APP_PLAN.md     # Migration plan for lawn-control
 ```
@@ -52,20 +53,35 @@ rndpig-landing/
 |-----|-----|
 | Dinner Spinner | dinner.rndpig.com |
 | Deer Deterrent | deer.rndpig.com |
-| Network Monitor | network.rndpig.com |
 | Weather Monitor | weather.rndpig.com |
+| Lawn Control | lawn.rndpig.com |
+| Home Maintenance | home.rndpig.com |
+| Network Monitor | network.rndpig.com |
 | Dept56 Gallery | dept56.rndpig.com |
 
-When `lawn.rndpig.com` ships, add a card for it to `index.html`.
+**Standing rule: every new app that ships gets a card in `index.html` as part of
+its deploy** (also a checklist item in the user-level `new-app-bootstrap` skill).
+The landing page is the compact portfolio view — it must never lag the portfolio.
 
 ---
 
-## Design Conventions
+## Design Conventions (refreshed 2026-07-04 — see docs/superpowers/specs/2026-07-04-landing-refresh-design.md)
 
-- **Dark-first palette**: CSS variables in `:root` (`--bg-primary: #0a0a0f`), no light mode
-- **Card hover effects**: Gradient border reveal (`::before`), glow (`::after` blur), `translateY(-6px)` lift
-- **Fixed header**: `backdrop-filter: blur(20px)`
-- **2-column grid** for project cards, collapses to 1-column at 768px
+- **Brand = the snout mark**: squircle disc + two tilted oval nostrils (drawn from
+  real snout photos), in pig-pink, everywhere (header, favicon, admin). **Never
+  the 🐷 emoji.**
+- **Pink is the logo's color ONLY** (owner decision 2026-07-04): `--snout-pink:
+  oklch(0.78 0.10 356)` (≈ `#eb9db3` in standalone SVGs) appears solely on the
+  snout mark. All interactive UI (glyphs, hovers, buttons, links) uses the blue
+  accent `oklch(0.70 0.14 259)`. OKLCH tokens in `:root`, cool dark ground, no
+  light mode.
+- **Typography**: Gabarito (Google Fonts), weight contrast 400–700.
+- **No hero**: sticky header → app grid immediately. Launcher rows
+  (glyph tile | name/desc/domain | arrow), whole card is the link.
+- **Per-app line-art glyphs**: 24×24 stroke 1.75 round-cap `<symbol>`s in
+  `index.html` — add one for each new app.
+- **Grid**: `repeat(auto-fit, minmax(min(100%, 330px), 1fr))` — no breakpoint math.
+- **Motion**: CSS-only entrance stagger; `prefers-reduced-motion` collapses it.
 - **All project links**: `target="_blank" rel="noopener noreferrer"`
 
 ---
