@@ -9,6 +9,11 @@ node_modules/
 *serviceAccount*.json
 *.pem
 
+# Tunnel-ingress rollback snapshots — these hold the internal
+# hostname -> localhost:PORT map for every app on dilger, and this
+# repo is served publicly at rndpig.com. Keep them local.
+scripts/provision/backups/
+
 # Build output
 dist/
 build/
