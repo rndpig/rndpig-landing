@@ -1,4 +1,4 @@
-# ============================================================================
+﻿# ============================================================================
 # UNVERIFIED — requires the provisioning service account from
 # docs/PROVISIONING_API_AUTOMATION.md (roles/firebaseauth.admin on rndpig-admin).
 # Run once with -DryRun and confirm the merged list before PATCHing for real.

@@ -1,4 +1,4 @@
-# ============================================================================
+﻿# ============================================================================
 # UNVERIFIED — requires the provisioning service account from
 # docs/PROVISIONING_API_AUTOMATION.md (roles/firebasehosting.admin on the app's
 # hosting project). Run with -ValidateOnly first and confirm request/response
