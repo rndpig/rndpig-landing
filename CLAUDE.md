@@ -58,6 +58,7 @@ rndpig-landing/
 | Home Maintenance | home.rndpig.com |
 | Network Monitor | network.rndpig.com |
 | Dept56 Gallery | dept56.rndpig.com |
+| Health | health.rndpig.com |
 
 **Standing rule: every new app that ships gets a card in `index.html` as part of
 its deploy** (also a checklist item in the user-level `new-app-bootstrap` skill).
@@ -83,6 +84,14 @@ The landing page is the compact portfolio view — it must never lag the portfol
 - **Grid**: `repeat(auto-fit, minmax(min(100%, 330px), 1fr))` — no breakpoint math.
 - **Motion**: CSS-only entrance stagger; `prefers-reduced-motion` collapses it.
 - **All project links**: `target="_blank" rel="noopener noreferrer"`
+- **Arrange mode** (added 2026-08-24): the header **Arrange** button toggles drag-to-reorder
+  on the app cards (vendored `js/Sortable.min.js` = SortableJS 1.15.6 MIT, no build/CDN; wired in
+  `js/arrange.js`). Model: the **committed `<li>` order in `index.html` is the shared default**
+  everyone sees — arrange mode lets the owner drag, then **Copy order** puts the new slug order on
+  the clipboard; making it the new default means reordering the `<li>` blocks in `index.html` to
+  match and pushing. Nothing persists per-browser, so a reload always shows the committed order and
+  a visitor's dragging is transient. To change the order: enter Arrange → drag → Copy order → hand
+  the slug list to Claude (or reorder the `<li>`s yourself) → commit/push.
 
 ---
 
