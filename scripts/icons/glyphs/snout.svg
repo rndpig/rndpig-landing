@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!--
+    The snout mark, for rndpig.com's own Home Screen icon.
+
+    The portfolio's brand mark is not in lucide or Tabler, so it lives here as a
+    local glyph on the same 24-unit grid the other glyphs use. The geometry is
+    the site's own mark (index.html's #snout symbol and favicon.svg), enlarged
+    about the centre by 1.09 so it carries the same optical weight as a lucide
+    glyph: those fill most of the 24-unit box, while the mark as drawn for the
+    header fills only 17.8 of 24 across. Proportions are otherwise untouched —
+    same squircle flattening, same nostril size, same 15-degree tilt, and the
+    nostrils still sit fractionally low, which is what makes it read as a snout
+    rather than a two-hole plug.
+
+    1.09 rather than filling the box outright: the mark is landscape where the
+    library glyphs are roughly square, so matching their width made it read
+    heavier than its siblings on a shelf of tiles. This lands its outer width at
+    about 45% of the canvas, against the shopping bag's 42%.
+
+    Stroke width is deliberately absent: build-icons.mjs sets it on the group so
+    every icon in the family shares one stroke weight, and strips any local
+    override that would win. The nostrils are filled rather than stroked, which
+    is why they ask for `currentColor` — the group sets `color` for exactly this.
+  -->
+  <rect x="2.3" y="5.35" width="19.4" height="13.3" rx="6.1" fill="none" />
+  <ellipse cx="8.4" cy="12.22" rx="1.64" ry="2.51" fill="currentColor" stroke="none"
+           transform="rotate(-15 8.4 12.22)" />
+  <ellipse cx="15.6" cy="12.22" rx="1.64" ry="2.51" fill="currentColor" stroke="none"
+           transform="rotate(15 15.6 12.22)" />
+</svg>

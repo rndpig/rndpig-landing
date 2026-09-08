@@ -33,7 +33,11 @@ const TAGS = [
 
 let changed = 0
 for (const app of APPS) {
-  const html = join(PORTFOLIO, dirname(app.out), 'index.html')
+  // An app keeps its icons in frontend/public and its markup one level up, so
+  // the default is the parent of `out`. A static site that serves both from one
+  // directory says so with `html`, because dirname() there would climb out of
+  // the repo entirely.
+  const html = join(PORTFOLIO, app.html ?? dirname(app.out), 'index.html')
   if (!existsSync(html)) {
     console.log(`  ! ${app.id}: no index.html`)
     continue

@@ -29,6 +29,9 @@ const PORTFOLIO = resolve(REPO, '..')
 const SETS = {
   lucide: resolve(REPO, 'node_modules/lucide-static/icons'),
   tabler: resolve(REPO, 'node_modules/@tabler/icons/icons/outline'),
+  // Marks that are ours rather than a library's — the snout, for rndpig.com's
+  // own tile. Same 24-unit grid, same round caps, so they mix unaltered.
+  local: resolve(HERE, 'glyphs'),
 }
 
 const args = process.argv.slice(2)
@@ -62,6 +65,12 @@ function glyphInner(ref) {
  * Compose one icon. The glyph is drawn in lucide's 24-unit space and then
  * placed by a single transform, so its stroke weight is identical in every
  * icon regardless of the output size.
+ *
+ * The group carries `color` as well as `stroke` so that a glyph with a filled
+ * part can ask for `fill="currentColor"` and get the accent. Library glyphs are
+ * pure strokes and never notice; the snout's nostrils are filled, and without
+ * this they would inherit the group's `fill="none"` and render as two hollow
+ * outlines instead of nostrils.
  */
 function iconSVG(app, px) {
   const inner = glyphInner(app.glyph)
@@ -85,6 +94,7 @@ function iconSVG(app, px) {
   <rect width="${px}" height="${px}" fill="url(#glow)" />
   <g transform="translate(${offset} ${offset}) scale(${scale})"
      fill="none"
+     color="${color}"
      stroke="${color}"
      stroke-width="${STROKE}"
      stroke-linecap="round"
