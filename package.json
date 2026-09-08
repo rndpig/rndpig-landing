@@ -24,7 +24,10 @@
     "optimize": "echo 'Image optimization and minification would go here'"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@tabler/icons": "^3.46.0",
+    "http-server": "^14.1.1",
+    "lucide-static": "^1.42.0",
+    "sharp": "^0.35.4"
   },
   "config": {
     "port": 8000,
