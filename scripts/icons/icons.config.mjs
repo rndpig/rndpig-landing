@@ -40,11 +40,32 @@ export const SIZES = [
 ]
 
 /**
- * `glyph` is "<set>/<name>", where set is `lucide` or `tabler`.
+ * `glyph` is "<set>/<name>", where set is `lucide`, `tabler`, or `local`
+ *   (scripts/icons/glyphs — marks that are ours rather than a library's).
  * `color` is the app's own accent, in OKLCH, as the icon's stroke.
  * `glow` is that hue at low alpha behind the glyph.
+ * `html` optionally names the directory holding the index.html to wire, for a
+ *   site that serves its icons from the same directory as its markup rather
+ *   than from a `frontend/public`. Defaults to the parent of `out`.
  */
 export const APPS = [
+  {
+    // The launcher itself was missing from this list, so rndpig.com was the one
+    // tile on the Home Screen still showing iOS's generated square — the exact
+    // problem this system exists to fix.
+    id: 'rndpig-landing',
+    label: 'rndpig',
+    // GitHub Pages serves this repo's root, so the PNGs and the markup are
+    // siblings; there is no frontend/public to write into.
+    out: 'rndpig-landing',
+    html: 'rndpig-landing',
+    // The one place pink is allowed (owner decision 2026-07-04): it appears
+    // only on the snout mark, and this tile is nothing but the snout mark.
+    // `--snout-pink` from css/styles.css, unchanged.
+    color: 'oklch(0.78 0.10 356)',
+    glow: 'oklch(0.70 0.12 356)',
+    glyph: 'local/snout',
+  },
   {
     id: 'deer-deterrent',
     label: 'Deer',
