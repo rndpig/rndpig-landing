@@ -13,6 +13,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { APPS, GROUND, GLYPH_SCALE, STROKE } from './icons.config.mjs'
+import { toHex } from './oklch.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const REPO = resolve(HERE, '../..')
@@ -43,14 +44,14 @@ function tile(app, ref, px = 128) {
   const uid = ref.replace(/\W/g, '')
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${px}" height="${px}" viewBox="0 0 ${px} ${px}">
     <defs><radialGradient id="g${uid}" cx="50%" cy="42%" r="58%">
-      <stop offset="0%" stop-color="${app.glow}" stop-opacity="0.30"/>
-      <stop offset="55%" stop-color="${app.glow}" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="${app.glow}" stop-opacity="0"/>
+      <stop offset="0%" stop-color="${toHex(app.glow)}" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="${toHex(app.glow)}" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="${toHex(app.glow)}" stop-opacity="0"/>
     </radialGradient></defs>
     <rect width="${px}" height="${px}" fill="${GROUND}"/>
     <rect width="${px}" height="${px}" fill="url(#g${uid})"/>
     <g transform="translate(${offset} ${offset}) scale(${scale})" fill="none"
-       stroke="${app.color}" stroke-width="${STROKE}"
+       stroke="${toHex(app.color)}" stroke-width="${STROKE}"
        stroke-linecap="round" stroke-linejoin="round">${glyphInner(ref)}</g>
   </svg>`
 }

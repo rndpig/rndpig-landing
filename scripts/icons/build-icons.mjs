@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 import { APPS, GROUND, GLYPH_SCALE, STROKE, SIZES } from './icons.config.mjs'
+import { toHex } from './oklch.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const REPO = resolve(HERE, '../..')
@@ -64,6 +65,10 @@ function glyphInner(ref) {
  */
 function iconSVG(app, px) {
   const inner = glyphInner(app.glyph)
+  // librsvg, which sharp rasterises through, does not understand oklch() and
+  // silently renders any paint using it as black. See oklch.mjs.
+  const color = toHex(app.color)
+  const glow = toHex(app.glow)
   const box = px * GLYPH_SCALE
   const offset = (px - box) / 2
   const scale = box / 24
@@ -71,22 +76,47 @@ function iconSVG(app, px) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${px}" height="${px}" viewBox="0 0 ${px} ${px}">
   <defs>
     <radialGradient id="glow" cx="50%" cy="42%" r="58%">
-      <stop offset="0%" stop-color="${app.glow}" stop-opacity="0.30" />
-      <stop offset="55%" stop-color="${app.glow}" stop-opacity="0.10" />
-      <stop offset="100%" stop-color="${app.glow}" stop-opacity="0" />
+      <stop offset="0%" stop-color="${glow}" stop-opacity="0.30" />
+      <stop offset="55%" stop-color="${glow}" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="${glow}" stop-opacity="0" />
     </radialGradient>
   </defs>
   <rect width="${px}" height="${px}" fill="${GROUND}" />
   <rect width="${px}" height="${px}" fill="url(#glow)" />
   <g transform="translate(${offset} ${offset}) scale(${scale})"
      fill="none"
-     stroke="${app.color}"
+     stroke="${color}"
      stroke-width="${STROKE}"
      stroke-linecap="round"
      stroke-linejoin="round">
       ${inner}
   </g>
 </svg>`
+}
+
+/**
+ * Refuse to write a tile with no glyph on it.
+ *
+ * The first build of this set shipped seven identical black squares: librsvg
+ * does not support oklch(), so every stroke and gradient stop resolved to
+ * nothing, and it does so silently — no warning, no error, a valid PNG out the
+ * other end. Nothing in the pipeline noticed, and the contact sheet could not,
+ * because Chrome renders oklch just fine.
+ *
+ * A drawn glyph puts a bright stroke on a dark ground, so the pixels spread.
+ * A blank tile has almost no spread. That difference is the cheapest possible
+ * check that something actually got drawn.
+ */
+async function assertNotBlank(png, app, file) {
+  const { channels } = await sharp(png).stats()
+  const spread = Math.max(...channels.map((c) => c.stdev))
+  if (spread < 12) {
+    throw new Error(
+      `${app.id}/${file} rendered essentially blank (stdev ${spread.toFixed(1)}). ` +
+        `The glyph or its color did not survive rasterisation — check that ` +
+        `${app.glyph} exists and that colors are hex by the time they reach sharp.`
+    )
+  }
 }
 
 async function writeApp(app) {
@@ -104,7 +134,9 @@ async function writeApp(app) {
     console.log(`  · ${app.id}: created ${app.out}`)
   }
   for (const { file, px } of SIZES) {
-    const png = await sharp(Buffer.from(iconSVG(app, px))).png({ compressionLevel: 9 }).toBuffer()
+    const svg = iconSVG(app, px)
+    const png = await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toBuffer()
+    await assertNotBlank(png, app, file)
     writeFileSync(join(outDir, file), png)
   }
   console.log(`  + ${app.id}: ${SIZES.map((s) => s.file).join(', ')}`)
