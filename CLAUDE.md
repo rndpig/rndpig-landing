@@ -59,6 +59,7 @@ rndpig-landing/
 | Network Monitor | network.rndpig.com |
 | Dept56 Gallery | dept56.rndpig.com |
 | Health | health.rndpig.com |
+| Grocery | grocery.rndpig.com |
 
 **Standing rule: every new app that ships gets a card in `index.html` as part of
 its deploy** (also a checklist item in the user-level `new-app-bootstrap` skill).
