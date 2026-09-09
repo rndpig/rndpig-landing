@@ -85,14 +85,17 @@ The landing page is the compact portfolio view — it must never lag the portfol
 - **Grid**: `repeat(auto-fit, minmax(min(100%, 330px), 1fr))` — no breakpoint math.
 - **Motion**: CSS-only entrance stagger; `prefers-reduced-motion` collapses it.
 - **All project links**: `target="_blank" rel="noopener noreferrer"`
-- **Arrange mode** (added 2026-08-24): the header **Arrange** button toggles drag-to-reorder
-  on the app cards (vendored `js/Sortable.min.js` = SortableJS 1.15.6 MIT, no build/CDN; wired in
-  `js/arrange.js`). Model: the **committed `<li>` order in `index.html` is the shared default**
-  everyone sees — arrange mode lets the owner drag, then **Copy order** puts the new slug order on
-  the clipboard; making it the new default means reordering the `<li>` blocks in `index.html` to
-  match and pushing. Nothing persists per-browser, so a reload always shows the committed order and
-  a visitor's dragging is transient. To change the order: enter Arrange → drag → Copy order → hand
-  the slug list to Claude (or reorder the `<li>`s yourself) → commit/push.
+- **Arrange mode** (added 2026-08-24, per-device persistence 2026-09-08): the header **Arrange**
+  button toggles drag-to-reorder on the app cards (vendored `js/Sortable.min.js` = SortableJS 1.15.6
+  MIT, no build/CDN; wired in `js/arrange.js`). Model: the **committed `<li>` order in `index.html`
+  is the shared default** everyone sees. **Done** saves the dragged order in that browser's
+  `localStorage` (key `rndpig.cardOrder`) and the page applies it on every load, so the order
+  sticks per device; Escape cancels; **Reset to default** restores the committed order (Done then
+  clears the stored one); cards added after an order was saved follow at the end. **Share order**
+  copies (share sheet on touch devices) a link like `/?order=grocery,deer,...`; opening it on
+  another device applies and saves that order there, and the param is then stripped from the URL.
+  To change the committed default: paste that link (or the order) to Claude, who reorders the
+  `<li>` blocks in `index.html` and pushes.
 
 ---
 

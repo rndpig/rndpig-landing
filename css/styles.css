@@ -376,6 +376,24 @@ main.container {
 }
 .arrange-btn--ghost:hover { background: var(--accent-tint); filter: none; }
 
+/* Secondary action styled as a quiet text link so Reset/Done carry the bar. */
+.arrange-link {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0.4rem 0.2rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    transition: color 0.15s ease;
+}
+.arrange-link:hover { color: var(--accent); }
+.arrange-bar [hidden] { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
     .app-drag .app { box-shadow: none; }
 }
