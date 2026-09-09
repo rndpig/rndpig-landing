@@ -317,7 +317,11 @@ main.container {
     transform: none;
     border-color: var(--border-hover);
 }
-.arranging .app-arrow { opacity: 0; }
+/* Hover/focus arrow rules out-specify a bare `.arranging .app-arrow`, so list
+   those states explicitly — otherwise the arrow pops back on hover mid-drag. */
+.arranging .app-arrow,
+.arranging .app:hover .app-arrow,
+.arranging .app:focus-visible .app-arrow { opacity: 0; }
 
 /* SortableJS state classes. */
 .app-ghost {
