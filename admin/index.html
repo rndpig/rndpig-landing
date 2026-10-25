@@ -205,9 +205,15 @@
     function appendRow(email, total) {
       const li = document.createElement('li');
       li.dataset.email = email;
-      li.innerHTML = `<span>${email}</span>
-        <button class="del-btn" title="Remove" ${total <= 1 ? 'disabled' : ''}>✕</button>`;
-      li.querySelector('.del-btn').addEventListener('click', () => removeEmail(email));
+      const label = document.createElement('span');
+      label.textContent = email;
+      const delBtn = document.createElement('button');
+      delBtn.className = 'del-btn';
+      delBtn.title = 'Remove';
+      delBtn.disabled = total <= 1;
+      delBtn.textContent = '✕';
+      delBtn.addEventListener('click', () => removeEmail(email));
+      li.append(label, delBtn);
       emailList.appendChild(li);
     }
 
