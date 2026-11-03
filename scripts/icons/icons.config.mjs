@@ -127,4 +127,15 @@ export const APPS = [
     glow: 'oklch(0.68 0.17 55)',
     glyph: 'lucide/shopping-bag',
   },
+  {
+    id: 'family-finance',
+    label: 'Finance',
+    out: 'family-finance/frontend/public',
+    // Owner asked for a darker green, set apart from lawn's bright leaf green
+    // (oklch 0.70 0.16 150): deeper, less saturated, and turned toward emerald.
+    // The dollar sign and the sprout also differ completely in silhouette.
+    color: 'oklch(0.64 0.12 165)',
+    glow: 'oklch(0.52 0.12 165)',
+    glyph: 'lucide/dollar-sign',
+  },
 ]
