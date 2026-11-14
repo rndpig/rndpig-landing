@@ -33,6 +33,8 @@ No build step needed. Edit files directly.
 ```
 rndpig-landing/
 ├── index.html           # Single-page app launcher (no JS — deleted js/script.js 2026-07-04)
+├── js/update-check.js   # Reloads a saved Home Screen page when a newer version is published
+│                        #   (compares GitHub Pages' Last-Modified publish time; loaded by index + admin)
 ├── css/styles.css       # All styles, OKLCH tokens, pig-pink dark theme
 ├── favicon.svg          # Snout mark on dark rounded square
 ├── wordmark.svg / .jpg  # Standalone brand asset (index uses inline HTML brand instead)
