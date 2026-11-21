@@ -138,4 +138,16 @@ export const APPS = [
     glow: 'oklch(0.52 0.12 165)',
     glyph: 'lucide/dollar-sign',
   },
+  {
+    id: 'notify',
+    label: 'Notify',
+    out: 'notify/frontend/public',
+    // Indigo: the widest gap left on the wheel, between deer's blue (256) and
+    // home's purple (305). Amber would have been the obvious 'alert' color, but
+    // it sits between weather's yellow and grocery's orange. The bell is a
+    // silhouette nothing else here has.
+    color: 'oklch(0.72 0.16 282)',
+    glow: 'oklch(0.60 0.19 282)',
+    glyph: 'lucide/bell-ring',
+  },
 ]
